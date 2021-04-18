@@ -1,5 +1,6 @@
 package com.degrendel.godot.slf4j
 
+import godot.global.GD
 import org.slf4j.ILoggerFactory
 import org.slf4j.Logger
 import java.util.concurrent.ConcurrentHashMap

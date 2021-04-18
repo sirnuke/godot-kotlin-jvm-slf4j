@@ -1,5 +1,6 @@
-package com.degrendel.godot.slf4j
+package org.slf4j.impl
 
+import com.degrendel.godot.slf4j.GodotLoggerFactory
 import org.slf4j.spi.LoggerFactoryBinder
 
 class StaticLoggerBinder : LoggerFactoryBinder {
@@ -15,6 +16,5 @@ class StaticLoggerBinder : LoggerFactoryBinder {
     private val loggerFactory = GodotLoggerFactory()
 
     override fun getLoggerFactory() = loggerFactory
-
     override fun getLoggerFactoryClassStr(): String = classString
 }

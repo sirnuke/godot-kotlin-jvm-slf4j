@@ -5,6 +5,9 @@ import org.slf4j.Logger
 import org.slf4j.Marker
 import org.slf4j.helpers.MessageFormatter
 import org.slf4j.spi.LocationAwareLogger
+import java.time.ZoneOffset
+import java.time.ZonedDateTime
+import java.time.format.DateTimeFormatter
 
 class GodotLogger(private val name: String) : Logger {
     var currentLogLevel = LocationAwareLogger.INFO_INT
@@ -90,7 +93,7 @@ class GodotLogger(private val name: String) : Logger {
             else -> throw IllegalStateException("Unknown level $level")
         }
         val stack: String = renderStack(t)
-        val out = "[$threadName][$levelName] $message $stack"
+        val out = "${ZonedDateTime.now(ZoneOffset.UTC).format(DateTimeFormatter.ISO_INSTANT)} [$threadName][$levelName] $message $stack"
         if (level == LocationAwareLogger.ERROR_INT)
             GD.printErr(out)
         else
@@ -99,7 +102,7 @@ class GodotLogger(private val name: String) : Logger {
 
     private fun renderStack(t: Throwable?): String {
         val stack = t?.stackTrace ?: return ""
-        return stack.joinToString("\n")
+        return "\n${stack.joinToString(separator = "\n\t", prefix = "\t")}"
     }
 
     private fun formatAndLog(level: Int, format: String?, arg1: Any?, arg2: Any?) {
