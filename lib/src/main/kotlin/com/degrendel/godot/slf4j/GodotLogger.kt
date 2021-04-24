@@ -118,7 +118,7 @@ class GodotLogger(private val name: String) : Logger
     val stack: String = renderStack(t)
     val out = "${
       ZonedDateTime.now(ZoneOffset.UTC).format(DateTimeFormatter.ISO_INSTANT)
-    } [$threadName][$levelName] $message $stack"
+    } [$threadName][$levelName] $name - $message $stack"
     if (level == LocationAwareLogger.ERROR_INT)
       GD.printErr(out)
     else
