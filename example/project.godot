@@ -8,9 +8,14 @@
 
 config_version=4
 
-_global_script_classes=[  ]
+_global_script_classes=[ {
+"base": "Node",
+"class": "com_degrendel_slf4jexample_Example",
+"language": "Kotlin",
+"path": "res://src/main/kotlin/com/degrendel/slf4jexample/Example.kt"
+} ]
 _global_script_class_icons={
-
+"com_degrendel_slf4jexample_Example": ""
 }
 
 [application]
