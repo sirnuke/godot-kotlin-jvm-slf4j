@@ -55,10 +55,6 @@ else if (project.properties.containsKey("ossrhUsername"))
   val ossrhUsername: String by project
   val ossrhPassword: String by project
 
-  signing {
-    sign(publishing.publications["maven"])
-  }
-
   publishing {
     publications {
       create<MavenPublication>("maven") {
@@ -101,5 +97,9 @@ else if (project.properties.containsKey("ossrhUsername"))
         name = "ossrh"
       }
     }
+  }
+
+  signing {
+    sign(publishing.publications["maven"])
   }
 }
