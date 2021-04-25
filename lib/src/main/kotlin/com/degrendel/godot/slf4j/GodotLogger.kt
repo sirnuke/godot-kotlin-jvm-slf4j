@@ -9,6 +9,16 @@ import java.time.ZoneOffset
 import java.time.ZonedDateTime
 import java.time.format.DateTimeFormatter
 
+/**
+ * SLF4J implementation that sends messages to GD.print and GD.printerr.
+ *
+ * If you need to customize the output, you'll need to copy the three Kotlin source files to your project, and modify
+ * this class's log function.
+ *
+ * If you want to modify the minimum log level (say to print TRACE or DEBUG level messages) try casting an instance of
+ * the logger to this class and setting currentLogLevel to LocationAwareLogger.TRACE_INT or
+ * LocationAwareLogger.DEBUG_INT.
+ */
 class GodotLogger(private val name: String) : Logger
 {
   var currentLogLevel = LocationAwareLogger.INFO_INT
