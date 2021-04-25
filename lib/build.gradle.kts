@@ -58,12 +58,14 @@ else if (project.properties.containsKey("ossrhUsername"))
   publishing {
     publications {
       create<MavenPublication>("maven") {
+        from(components["java"])
         artifact(javadocJar)
         pom {
           name.set("SLF4J Godot Logger")
           description.set("SLF4J logger for Godot's Kotlin (JVM) bindings")
           artifactId = "slf4j-godot"
           url.set("https://github.com/sirnuke/godot-kotlin-jvm-slf4j")
+          inceptionYear.set("2021")
           licenses {
             license {
               name.set("MIT License")
@@ -77,12 +79,17 @@ else if (project.properties.containsKey("ossrhUsername"))
               email.set("bryan@degrendel.com")
             }
           }
+          issueManagement {
+            system.set("GitHub")
+            url.set("https://github.com/sirnuke/godot-kotlin-jvm-slf4j/issues")
+          }
           scm {
             connection.set("scm:git:https://github.com/sirnuke/godot-kotlin-jvm-slf4j.git")
             developerConnection.set("scm:git:ssh:git@github.com:godot-kotlin-jvm-slf4j.git")
             url.set("https://github.com/sirnuke/godot-kotlin-jvm-slf4j")
           }
         }
+        the<SigningExtension>().sign(this)
       }
     }
     repositories {
@@ -100,6 +107,6 @@ else if (project.properties.containsKey("ossrhUsername"))
   }
 
   signing {
-    sign(publishing.publications["maven"])
+    useGpgCmd()
   }
 }
