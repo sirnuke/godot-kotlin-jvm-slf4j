@@ -33,7 +33,7 @@ if (project.properties.containsKey("internalMavenURL"))
       create<MavenPublication>("maven") {
         from(components["java"])
         artifact(javadocJar)
-        artifactId = "godot-kotlin-jvm-slf4j"
+        artifactId = "slf4j-godot"
       }
     }
     repositories {
@@ -64,8 +64,9 @@ else if (project.properties.containsKey("ossrhUsername"))
       create<MavenPublication>("maven") {
         artifact(javadocJar)
         pom {
-          name.set("Godot SLF4J Kotlin-JVM")
+          name.set("SLF4J Godot Logger")
           description.set("SLF4J logger for Godot's Kotlin (JVM) bindings")
+          artifactId = "slf4j-godot"
           url.set("https://github.com/sirnuke/godot-kotlin-jvm-slf4j")
           licenses {
             license {
