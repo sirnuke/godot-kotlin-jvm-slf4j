@@ -29,3 +29,6 @@ hs_err_pid*
 build/
 .gradle
 .*.sw*
+
+# Fix for Godot plugin creating random files
+/src/
