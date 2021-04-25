@@ -25,4 +25,7 @@ tasks.register("printVersion") {
 
 release {
   tagTemplate = "v\${version}"
+
+  (getProperty("git") as net.researchgate.release.GitAdapter.GitConfig).requireBranch = "main"
 }
+
